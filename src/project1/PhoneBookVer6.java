@@ -38,6 +38,7 @@ public class PhoneBookVer6 implements MenuItem
 				pbm.dataDelete();
 				pbm.printMenu();
 				continue;
+				
 			}
 			else if(choice==ALLSHOW) {
 				pbm.dataAllShow();
