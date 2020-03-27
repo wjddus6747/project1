@@ -1,63 +1,78 @@
 package project1;
 
+import java.io.EOFException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import javax.swing.MenuSelectionManager;
 
-import ver05.PhoneBookManager;
-import ver05.PhoneInfo;
-import ver05.MenuItem;
+import ver06.PhoneBookManager;
+import ver06.PhoneInfo;
+import ver06.MenuSelectException;
+import ver06.MenuItem;
 
 public class PhoneBookVer6 implements MenuItem
 {
 
 	public static void main(String[] args)
 	{
-		
-
 		PhoneBookManager pbm = new PhoneBookManager();
 		pbm.printMenu();
-		try {
+
 		while (true)
 		{
 			Scanner sc = new Scanner(System.in);
-			int choice = sc.nextInt();
+			int choice = 0;
+			try
+			{
+				choice = sc.nextInt();
+			} catch (InputMismatchException e)
+			{
+				System.out.println("문자를 입력했습니다.");
+				pbm.printMenu();
+				continue;
+			}
 
 			if (choice == INPUT)
 			{
 				pbm.dataInput();
 				pbm.printMenu();
 				continue;
-			} 
-			else if(choice==SEARCH) {
+			} else if (choice == SEARCH)
+			{
 				pbm.dataSearch();
 				pbm.printMenu();
 				continue;
-			}
-			else if(choice==DELETE) {
+			} else if (choice == DELETE)
+			{
 				pbm.dataDelete();
 				pbm.printMenu();
 				continue;
-				
-			}
-			else if(choice==ALLSHOW) {
+
+			} else if (choice == ALLSHOW)
+			{
 				pbm.dataAllShow();
 				pbm.printMenu();
 				continue;
-			}
-			else if(choice==EXIT)
+			} else if (choice == EXIT)
 			{
 				System.out.println("프로그램을 종료합니다.");
 				break;
 			}
-		}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("1~5만 입력하세요");
-		}
-		
-		
-	}
 
+			else if (choice > 5 || choice < 1)
+			{
+				MenuSelectException excep = new MenuSelectException();
+				try
+				{
+					throw excep;
+				} catch (MenuSelectException e)
+				{
+					System.out.println(e.getMessage());
+					pbm.printMenu();
+					continue;
+				}
+			}
+		}
+	}
 }

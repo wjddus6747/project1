@@ -4,6 +4,7 @@ import java.util.Scanner;
 import ver06.PhoneInfo;
 
 public class PhoneBookManager implements SubMenuItem
+
 {
 	PhoneInfo[] Book = new PhoneInfo[100];
 	int numfriend=0;
@@ -16,7 +17,7 @@ public class PhoneBookManager implements SubMenuItem
 		System.out.println("3. 데이터 삭제");
 		System.out.println("4. 주소록 출력");
 		System.out.println("5. 프로그램 종료");
-		System.out.println("선택: ");
+		System.out.print("선택: ");
 	}
 	
 	//입력
@@ -33,9 +34,9 @@ public class PhoneBookManager implements SubMenuItem
 		int number = sc.nextInt();
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.println("이름 : ");
+		System.out.print("이름 : ");
 		name = scan.nextLine();
-		System.out.println("핸드폰번호 : ");
+		System.out.print("핸드폰번호 : ");
 		phoneNumber = scan.nextLine();
 		
 		if(number==GENERAL) {
@@ -46,9 +47,9 @@ public class PhoneBookManager implements SubMenuItem
 		}
 		else if(number==COLLEGE) {
 			Scanner scan2 = new Scanner(System.in);
-			System.out.println("전공: " );
+			System.out.print("전공: " );
 			major = scan2.nextLine();
-			System.out.println("학년: " );
+			System.out.print("학년: " );
 			grade= scan2.nextInt();
 			System.out.println("데이터입력이 완료되었습니다.");
 			PhoneSchoolInfo school = new PhoneSchoolInfo(name, phoneNumber, major, grade);
@@ -56,7 +57,7 @@ public class PhoneBookManager implements SubMenuItem
 		}
 		else if(number==GRADE) {
 			Scanner scan3 = new Scanner(System.in);
-			System.out.println("회사명 : ");
+			System.out.print("회사명 : ");
 			com_name = scan3.nextLine();
 			System.out.println("데이터입력이 완료되었습니다.");
 			PhoneCompanyInfo company = new PhoneCompanyInfo(name, phoneNumber, com_name);
@@ -68,7 +69,7 @@ public class PhoneBookManager implements SubMenuItem
 	public void dataSearch() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("데이터검색을 시작합니다.");
-		System.out.println("이름:");
+		System.out.print("이름:");
 		String serach= sc.nextLine();
 		for(int i=0; i<numfriend; i++) {
 			if(serach.compareTo(Book[i].name) == 0) {
@@ -76,12 +77,15 @@ public class PhoneBookManager implements SubMenuItem
 				
 				System.out.println("데이터 검색이 완료되었습니다.");
 			}
+			else {
+				System.out.println("데이터가 없습니다.");
+			}
 		}
 	}
 	//삭제
 	public void dataDelete() {
 		System.out.println("데이터 삭제를 시작합니다.");
-		System.out.println("이름:");
+		System.out.print("이름:");
 		Scanner sc = new Scanner(System.in);
 		String deletename = sc.nextLine();
 		

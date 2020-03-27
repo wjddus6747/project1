@@ -2,11 +2,11 @@ package project1;
 
 import java.util.Scanner;
 
-import ver05.PhoneBookManager;
-import ver05.PhoneInfo;
-import ver05.MenuItem;
+import ver08.PhoneBookManager;
+import ver08.PhoneInfo;
+import ver08.MenuItem;
 
-public class PhoneBookVer5 implements MenuItem
+public class PhoneBookVer8 implements MenuItem
 {
 
 	public static void main(String[] args)
