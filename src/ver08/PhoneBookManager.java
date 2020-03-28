@@ -1,5 +1,9 @@
 package ver08;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -56,7 +60,7 @@ public class PhoneBookManager implements SubMenuItem
 					Book.add(new PhoneInfo(name, phoneNumber));
 				} else if (an == 2)
 				{
-					
+
 					// Book.add(new PhoneInfo(name, phoneNumber));
 				}
 			} else if (Book.add(new PhoneInfo(name, phoneNumber)) == true)
@@ -184,6 +188,42 @@ public class PhoneBookManager implements SubMenuItem
 		{
 			PhoneInfo pi = itr.next();
 			pi.showPhoneInfo();
+		}
+	}
+
+	public void savePhoneInfo()
+	{
+		try
+		{
+
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/ver08/Phone_Info.obj"));
+
+			out.writeObject(Book);
+			out.close();
+
+		} catch (Exception e)
+		{
+			System.out.println("예외발생");
+			e.printStackTrace();
+		}
+	}
+
+	public void InPhoneInfo()
+	{
+		try
+		{
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/ver08/Phone_Info.obj"));
+
+			HashSet<PhoneInfo> Book = (HashSet<PhoneInfo>) in.readObject();
+			Iterator<PhoneInfo> itr = Book.iterator();
+			while (itr.hasNext())
+			{
+				itr.next().showPhoneInfo();
+			}
+			in.close();
+		} catch (Exception e)
+		{
+			System.out.println("예외발생");
 		}
 	}
 }

@@ -38,11 +38,13 @@ public class PhoneBookVer8 implements MenuItem
 				continue;
 			} else if (choice == ALLSHOW)
 			{
+				pbm.InPhoneInfo();
 				pbm.dataAllShow();
 				pbm.printMenu();
 				continue;
 			} else if (choice == EXIT)
 			{
+				pbm.savePhoneInfo();
 				System.out.println("프로그램을 종료합니다.");
 				break;
 			}
