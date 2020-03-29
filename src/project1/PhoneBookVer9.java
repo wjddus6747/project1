@@ -5,7 +5,7 @@ import java.util.Scanner;
 import ver09.PhoneBookManager;
 import ver09.PhoneInfo;
 
-public class PhoneBookVer3
+public class PhoneBookVer9
 {
 	
 	public static void main(String[] args)
@@ -14,6 +14,7 @@ public class PhoneBookVer3
 
 		PhoneBookManager pbm = new PhoneBookManager();
 		pbm.printMenu();
+		pbm.ConnectionOracle();
 		
 		while (true)
 		{
@@ -42,7 +43,7 @@ public class PhoneBookVer3
 				continue;
 			}
 			else 
-			{
+			{	pbm.close();	
 				System.out.println("프로그램을 종료합니다.");
 				break;
 			}
