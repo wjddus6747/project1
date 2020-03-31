@@ -197,9 +197,9 @@ public class PhoneBookManager implements SubMenuItem
 		{
 
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/ver08/Phone_Info.obj"));
-
-			out.writeObject(Book);
-			out.close();
+			//저장
+			out.writeObject(Book); //book에 있는정보를 적는다.(저장한다)
+			out.close(); //읽고 저장하기 위해 연뚜껑을 닫는다.
 
 		} catch (Exception e)
 		{
@@ -213,8 +213,9 @@ public class PhoneBookManager implements SubMenuItem
 		try
 		{
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/ver08/Phone_Info.obj"));
-
-			HashSet<PhoneInfo> Book = (HashSet<PhoneInfo>) in.readObject();
+			//불러오기 or 가져오기(출력)
+			HashSet<PhoneInfo> Book = (HashSet<PhoneInfo>) in.readObject(); 
+			
 			Iterator<PhoneInfo> itr = Book.iterator();
 			while (itr.hasNext())
 			{

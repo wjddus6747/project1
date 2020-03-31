@@ -29,7 +29,7 @@ public class PhoneBookManager
 		System.out.println("선택: ");
 	}
 
-	// 입력
+	// 입력 PreparedStatement 클래스 이용 
 	public void dataInput()
 	{
 
@@ -71,7 +71,8 @@ public class PhoneBookManager
 
 	}
 
-	// 검색
+	// 검색 Statement 클래스 이용
+
 	public void dataSearch()
 	{
 
@@ -103,7 +104,7 @@ public class PhoneBookManager
 		}
 	}
 
-	// 삭제
+	// 삭제 PreparedStatement 클래스 이용
 	public void dataDelete()
 	{
 		try
@@ -158,7 +159,6 @@ public class PhoneBookManager
 	// 오라틀 DB에 연결
 	public void ConnectionOracle()
 	{
-
 		try
 		{
 			Class.forName("oracle.jdbc.OracleDriver");
